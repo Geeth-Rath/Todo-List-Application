@@ -6,17 +6,17 @@ React Frontend:
 * React Hooks.
 * Redux Toolkit.
 
-Prerequisites
+# Prerequisites
 Before you begin, ensure you have met the following requirements:
 
-Node.js and npm installed.
-IDE with support for React development.
+* Node.js and npm installed.
+* IDE with support for React development.
 
-Getting Started
+#Getting Started
 
 Clone the repository:
 
 https://github.com/Geeth-Rath/todo-list-application.git
 
-Author
-Geethma Rathnayake
+# Author
+* Geethma Rathnayake
