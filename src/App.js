@@ -6,10 +6,7 @@ import { motion } from "framer-motion";
 function App() {
   return (
     <div className="App">
-      <h1 
-      >
-        Todo App
-      </h1>
+      <h1>Todo List</h1>
       <div>
         <Todos />
         <DisplayTodos />

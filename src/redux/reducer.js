@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const savedTodos = JSON.parse(localStorage.getItem("todos"));
 
-const initialState = savedTodos || []; 
+const initialState = savedTodos || [];
 
 const addTodoReducer = createSlice({
   name: "todos",
@@ -11,26 +11,31 @@ const addTodoReducer = createSlice({
     // Adding todos
     addTodos: (state, action) => {
       state.push(action.payload);
-      localStorage.setItem("todos", JSON.stringify(state)); 
+      console.log("addTodos: ", state);
+      localStorage.setItem("todos", JSON.stringify(state));
     },
     // Remove todos
     removeTodos: (state, action) => {
       const newState = state.filter((item) => item.id !== action.payload);
-      localStorage.setItem("todos", JSON.stringify(newState)); 
+      localStorage.setItem("todos", JSON.stringify(newState));
       return newState;
     },
     // Update todos
     updateTodos: (state, action) => {
+      const { id, item, deadline, priority } = action.payload;
+      console.log("updatereducer: ", action.payload);
       const newState = state.map((todo) => {
-        if (todo.id === action.payload.id) {
+        if (todo.id === id) {
           return {
             ...todo,
-            item: action.payload.item,
+            item,
+            deadline,
+            priority,
           };
         }
         return todo;
       });
-      localStorage.setItem("todos", JSON.stringify(newState)); 
+      localStorage.setItem("todos", JSON.stringify(newState));
       return newState;
     },
     // Complete todos
@@ -50,10 +55,6 @@ const addTodoReducer = createSlice({
   },
 });
 
-export const {
-  addTodos,
-  removeTodos,
-  updateTodos,
-  completeTodos,
-} = addTodoReducer.actions;
+export const { addTodos, removeTodos, updateTodos, completeTodos } =
+  addTodoReducer.actions;
 export const reducer = addTodoReducer.reducer;

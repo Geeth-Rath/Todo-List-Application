@@ -1,41 +1,69 @@
 .addTodos {
-    display: flex;
-    justify-content: center;
-  }
-  .todo-input {
-    min-width: 15rem;
-    width: 40vw;
-  
-    max-height: 2.5rem;
-    background-color: #e1ebfd;
-    border: none;
-    border-radius: 5px;
-    padding: 0.5rem 1rem;
-  
-    align-self: center;
-  }
-  .todo-input:focus {
-    outline: none;
-    border: 2px solid rgb(67, 58, 168);
-  }
-  
-  .add-btn {
-    margin-left: 1rem;
-    background-color: #271c6c;
-    color: #e1ebfd;
-    border-radius: 50%;
-    border: 2px solid #e1ebfd;
-    font-size: 1.5rem;
-    width: 3.2rem;
-    height: 3.2rem;
-    cursor: pointer;
-    box-shadow: 2px 4px 10px #271c6c;
-  
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .add-btn:focus {
-    outline: none;
-  }
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.todo-input {
+  min-width: 15rem;
+  width: 40vw;
+
+  max-height: 2.5rem;
+  background-color: #e1ebfd;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+
+  align-self: center;
+}
+.todo-input:focus {
+  outline: none;
+  border: 2px solid rgb(67, 58, 168);
+}
+
+.add-btn {
+  margin-left: 1rem;
+  background-color: #271c6c;
+  color: #e1ebfd;
+  border-radius: 50%;
+  border: 2px solid #e1ebfd;
+  font-size: 1.5rem;
+  width: 3.2rem;
+  height: 3.2rem;
+  cursor: pointer;
+  box-shadow: 2px 4px 10px #271c6c;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-btn:focus {
+  outline: none;
+}
+
+.date-picking {
+  display: flex;
+  align-items: center;
+}
+.input-container-main {
+  display: flex;
+  flex-direction: row;
+}
+.deadline-picker {
+  margin-right: 13px;
+  border-radius: 5px;
+  width: 132px;
+  margin-left: 13px;
+  height: 29px;
+  border-radius: 5px;
+  padding-left: 9px;
+}
+
+.priority-picker {
+  width: 99px;
+  margin-left: 13px;
+  height: 29px;
+  border-radius: 5px;
+  padding-left: 9px;
+}

@@ -7,8 +7,8 @@ import {
   updateTodos,
 } from "../redux/reducer";
 import TodoItem from "./TodoItem";
-import {  motion } from "framer-motion";
-import '../styles/DisplayTodos.css'
+import { motion } from "framer-motion";
+import "../styles/DisplayTodos.css";
 
 const mapStateToProps = (state) => {
   return {
@@ -26,7 +26,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const DisplayTodos = (props) => {
-  console.log("pros are: ", props);
+  console.log("pros from displayt: ", props);
   const [sort, setSort] = useState("active");
   return (
     <div className="displaytodos">
@@ -35,6 +35,7 @@ const DisplayTodos = (props) => {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => setSort("active")}
+          className={sort === "active" ? "active-button" : ""}
         >
           Active
         </motion.button>
@@ -42,6 +43,7 @@ const DisplayTodos = (props) => {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => setSort("completed")}
+          className={sort === "completed" ? "active-button" : ""}
         >
           Completed
         </motion.button>
@@ -49,30 +51,29 @@ const DisplayTodos = (props) => {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => setSort("all")}
+          className={sort === "all" ? "active-button" : ""}
         >
           All
         </motion.button>
       </div>
       <ul>
-     
-          {props.todos.length > 0 && sort === "active"
-            ? props.todos.map((item) => {
-                return (
-                  item.completed === false && (
-                    <TodoItem
-                      key={item.id}
-                      item={item}
-                      removeTodo={props.removeTodo}
-                      updateTodo={props.updateTodo}
-                      completeTodo={props.completeTodo}
-                    />
-                  )
-                );
-              })
-            : null}
-          {/* for completed items */}
-          {props.todos.length > 0 && sort === "completed"
-            ? props.todos.map((item) => {
+        {props.todos.length > 0 &&
+          ((sort === "active" &&
+            props.todos.map((item) => {
+              return (
+                item.completed === false && (
+                  <TodoItem
+                    key={item.id}
+                    item={item}
+                    removeTodo={props.removeTodo}
+                    updateTodo={props.updateTodo}
+                    completeTodo={props.completeTodo}
+                  />
+                )
+              );
+            })) ||
+            (sort === "completed" &&
+              props.todos.map((item) => {
                 return (
                   item.completed === true && (
                     <TodoItem
@@ -84,23 +85,17 @@ const DisplayTodos = (props) => {
                     />
                   )
                 );
-              })
-            : null}
-          {/* for all items */}
-          {props.todos.length > 0 && sort === "all"
-            ? props.todos.map((item) => {
-                return (
-                  <TodoItem
-                    key={item.id}
-                    item={item}
-                    removeTodo={props.removeTodo}
-                    updateTodo={props.updateTodo}
-                    completeTodo={props.completeTodo}
-                  />
-                );
-              })
-            : null}
- 
+              })) ||
+            (sort === "all" &&
+              props.todos.map((item) => (
+                <TodoItem
+                  key={item.id}
+                  item={item}
+                  removeTodo={props.removeTodo}
+                  updateTodo={props.updateTodo}
+                  completeTodo={props.completeTodo}
+                />
+              ))))}
       </ul>
     </div>
   );
